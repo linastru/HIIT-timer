@@ -1,0 +1,363 @@
+:root {
+  --active-frame-width: 65%;
+  --rest-frame-width: 30%;
+  --font-family-sans-serif: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+
+  --bkg: #feffe4;
+  --active-bar:#90e990;
+  --active-bar-done:#f4f5db;
+  --rest-bar: #ff8080;
+  --rest-bar-done: #edeed5;
+  --text-dark: #474747;
+  --text-light: #8a8a8a;
+  --button-start: #369136;
+  --button-start-hover: #3ca13c;
+  --button-pause: #cc4a4a;
+  --button-pause-hover: #e75353;
+  --reset-button-hover: #9b9a9a;
+  --input-bkg: #fefff4;
+  --input-border: #dbdbdb;
+  --interval-button-hover: #e2e2e2;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background-color: var(--bkg);
+}
+
+input:focus,
+button:focus {
+    outline: none;
+}
+
+.container {
+  text-align: center;
+  color: var(--text-light);
+  font-family: var(--font-family-sans-serif);
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+.clock-container {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.clock-active {
+  color: var(--button-start);
+}
+
+.clock-rest {
+  color: var(--button-pause);
+}
+
+.clock {
+  font-size: 6rem;
+  margin: 0;
+}
+
+#clock-millisec {
+  font-size: 4rem;
+}
+
+@media (min-width: 250px){
+  .blips-group {
+    font-size: 1.1rem;
+    padding-top: 0;
+    line-height: 1.2rem;
+    margin: 0 30px;
+  }
+}
+
+@media (min-width: 550px){
+  .blips-group {
+    font-size: 1.5rem;
+    padding-top: 0.4rem;
+    line-height: 1.8rem;
+    margin: 0 30px;
+  }
+}
+
+img {
+  display: none;
+  width: 50px;
+  margin: 0 30px;
+  padding-top: 0.4rem;
+}
+
+.interval-count {
+  font-size: 2.5rem;
+  margin: 5px 0 10px 0;
+  color: var(--text-light);
+}
+
+/* ----------------- Progress Bars ----------------- */
+
+#progress-bars {
+  padding: 0 2%;
+  margin: 15px 0 40px 0; 
+  font-size: 0px;
+  text-align: left;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.interval {
+  display: inline-block;
+  width: 100%;
+  height: 40px;
+  margin-top: 5px;
+  position: relative;
+}
+
+@media (min-width: 250px){
+  .interval {
+    width: 100%;
+  }
+}
+
+@media (min-width: 550px){
+  .interval {
+    width: 50%;
+  }
+}
+
+@media (min-width: 750px) {
+  .interval {
+    width: 33%;
+  }
+}
+
+@media (min-width: 1000px) {
+  .interval {
+    width: 25%;
+  }
+}
+
+@media (min-width: 1250px) {
+  .interval {
+    width: 20%;
+  }
+}
+
+.active-frame {
+  width: var(--active-frame-width);
+  height: inherit;
+  background-color: var(--active-bar);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.active-frame-label {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.4rem;
+  color: var(--bkg);
+}
+
+.active-bar{
+  height: inherit;
+  width: 0%;
+  background-color: var(--active-bar-done);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.rest-frame {
+  width: var(--rest-frame-width);
+  height: inherit;
+  background-color: var(--rest-bar);
+  position: absolute;
+  top: 0;
+  left: var(--active-frame-width);
+}
+
+.rest-bar{
+  height: inherit;
+  width: 0%;
+  background-color: var(--rest-bar-done);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* ----------------- Controls ----------------- */
+
+.controls-container {
+  min-height: 300px;
+  padding: 0;
+  color: var(--text-dark);
+}
+
+.buttons-container {
+  text-align: left;
+  position: relative;
+  height: 100px;
+}
+
+.timer-btn {
+  font-size: 4rem;
+  color: var(--bkg);
+  font-family: var(--font-family-sans-serif);
+  width: 250px;
+  height: 95px;
+  border-width: 0;
+  border-radius: 5px;
+  padding-bottom: 0.6rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#start-btn {
+  background-color: var(--button-start);
+}
+
+#start-btn:hover {
+  background-color: var(--button-start-hover);
+}
+
+#start-btn:disabled {
+  background-color: var(--rest-bar-done);
+}
+
+.start-btn-resume {
+  font-size: 3.5rem;
+}
+
+#pause-btn {
+  background-color: var(--button-pause);
+  display: none;
+}
+
+#pause-btn:hover {
+  background-color: var(--button-pause-hover);
+}
+
+#reset-btn {
+  background-color: var(--text-light);
+  font-size: 2rem;
+  font-weight: bold;
+  width: 50px;
+  height: 50px;
+  padding-bottom: 0.3rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(140px, -50%);
+  position: absolute;
+}
+
+#reset-btn:hover {
+  background-color: var(--reset-button-hover);
+}
+
+#reset-btn:disabled {
+  background-color: var(--rest-bar-done);
+}
+
+.settings-table {
+  margin: 25px auto;
+  text-align: left;
+}
+
+.settings-table th {
+  padding: 1px 7px;
+  width: 120px;
+  background-color: var(--bkg);
+}
+
+.setting-label {
+  margin: 5px 0;
+  font-size: 1.4rem;
+  font-weight: normal;
+  text-align: right;
+}
+
+input {
+  width: 85px;
+  text-align: center;
+  padding: 0 0.3rem;
+  background-color: var(--input-bkg);
+  border: 1px solid;
+  border-color: var(--input-border);
+  font-family: var(--font-family-sans-serif);
+  font-size: 1.4rem;
+  color: var(--text-dark);
+}
+
+th > input {
+  border-radius: 3px;
+}
+
+input:disabled {
+  background-color: var(--input-border);
+}
+
+.interval-setting-group {
+  display: flex;
+  align-items: stretch;
+}
+
+#interval-input {
+  width: 35px;
+}
+
+/* Hiding number input spin buttons in Firefox. */
+#interval-input {
+  appearance: textfield;
+}
+
+/* Hiding number input spin buttons in Chrome, Safari, Edge, Opera. */
+#interval-input::-webkit-inner-spin-button,
+#interval-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.interval-btn {
+  width: 25px;
+  background-color: var(--input-border);
+  border: 0;
+  padding: 0;
+  font-family: sans-serif;
+  font-size: 1.4rem;
+  color: var(--text-light);
+}
+
+.interval-btn:hover {
+  background-color: var(--interval-button-hover);
+}
+
+.interval-btn:active {
+  background-color: var(--active-bar-done);
+}
+
+.interval-btn:disabled {
+  background-color: var(--input-border);
+}
+
+#interval-minus-btn {
+  border-radius: 3px 0 0 3px;
+}
+
+#interval-plus-btn {
+  border-radius: 0 3px 3px 0;
+}
+
+.input-error {
+  background-color: var(--rest-bar);
+}

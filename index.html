@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>HIIT Timer</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="./images/favicon_192.png" sizes="192x192">
+  <link rel="stylesheet" href="./styles.css">  
+</head>
+
+<body>
+  <div class="container">
+    
+    <div class="clock-container">
+      <div class="blips-group">
+      </div>
+      <img src="./images/finish_flag.png">
+      <div>
+        <p class="clock"><span id="clock-min-sec">00:00</span><span id="clock-millisec">.0</span></p>
+      </div>
+      <img src="./images/finish_flag.png">
+      <div class="blips-group">
+      </div>
+    </div>
+
+    <p class="interval-count"><span id="interval-no">0</span> / <span id="interval-total">0</span></p>
+    <div id="progress-bars"></div>
+    <div class="controls-container">
+      <div class="buttons-container">
+        <button class="timer-btn" id="start-btn" autocomplete="off">Start</button>
+        <button class="timer-btn" id="pause-btn">Pause</button>
+        <button class="timer-btn" id="reset-btn" autocomplete="off" disabled="true">&olarr;</button>
+      </div>
+      <table class="settings-table">
+        <tr>
+          <th>
+            <p class="setting-label">Intervals</p>
+          </th>
+          <th>
+            <div class="interval-setting-group">
+              <button class="interval-btn" id="interval-minus-btn"><span>&minus;</span></button>
+              <input type="number" id="interval-input" autocomplete="off">
+              <button class="interval-btn" id="interval-plus-btn"><span>+</span></button>
+            </div>
+          </th>
+        </tr>
+        <tr>
+          <th>
+            <p class="setting-label">Active time</p>
+          </th>
+          <th>
+            <input type="text" id="active-time-input" autocomplete="off">
+          </th>
+        </tr>
+        <tr>
+          <th>
+            <p class="setting-label">Rest time</p>
+          </th>
+          <th>
+            <input type="text" id="rest-time-input" autocomplete="off">
+          </th>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <script type="text/javascript" src="./script.js"></script>
+</body>
+
+</html>
